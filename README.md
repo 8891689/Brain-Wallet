@@ -2,6 +2,9 @@
 
 This project is a C implementation of a brain wallet that generates Bitcoin addresses (including P2PKH, P2SH, Bech32, and Bech32m) from a user-provided passphrase. The program utilizes the secp256k1 elliptic curve and includes implementations of SHA256, RIPEMD160, Base58, Base58Check, and Bech32/Bech32m encoding/decoding.  This project demonstrates the complete process of deriving public keys and various Bitcoin address formats from a private key.
 
+Note that this is an outdated method of generating private keys using a brain wallet and is not secure. If you need a secure method, please go to my homepage library and use a mnemonic phrase or the brain wallet used by aliens.
+
+Disclaimer: The author is not directly or indirectly responsible for any financial losses caused by using this wallet.
 ## Features
 
 *   **Passphrase to Private Key:** Generates a private key by hashing a user-provided passphrase using SHA256.
@@ -26,7 +29,7 @@ This project is a C implementation of a brain wallet that generates Bitcoin addr
     *   Fedora/CentOS/RHEL:  `sudo yum install gmp-devel`
     *   macOS (using Homebrew): `brew install gmp`
 
-*   **Standard C Libraries:**  `stdio.h`, `stdlib.h`, `stdint.h`, `stdbool.h`, `string.h`, `unistd.h`, `time.h`
+*   **Standard C Libraries:**  `stdio.h``stdlib.h``stdint.h``stdbool.h``string.h``unistd.h``time.h`
 
 *   **Included Libraries:** The project includes self-contained implementations of the following in separate directories, which are linked during compilation:
     *   `ecc/`: Elliptic Curve Cryptography functions (secp256k1).
@@ -48,7 +51,6 @@ A `Makefile` is included for easy compilation.  From the project's root director
 make
 
 ```
-
 ### 2. Using CMake
 
 A CMakeLists.txt file is also included for use with CMake.
@@ -59,7 +61,6 @@ cmake ..
 make
 
 ```
-
 ### 3. Using GCC (Single Command)
 
 Alternatively, you can compile the program with the following GCC command (ensure you are in the project's root directory):
@@ -110,7 +111,7 @@ P2WSH (Starts with bc1) Address (Uncompressed): bc1q5yxe627fp04wjwqccxck5qh3sz2g
 ```
 
 ### Code Structure
-```
+
 Brain.c: The main program file. Handles command-line arguments, calls the address generation functions, and prints the results.
 
 ecc/ecc.h and ecc/ecc.c: Implements elliptic curve operations over the secp256k1 curve using the GMP library.
@@ -124,7 +125,7 @@ base58/base58.h and base58/base58.c: Implementation of Base58 and Base58Check en
 bech32/bech32.h and bech32/bech32.c: Implementation of Bech32 and Bech32m encoding/decoding.
 
 customutil/customutil.h and customutil/customutil.c: Contains the generate_strpublickey function, which converts a Point structure (representing an elliptic curve point) into its hexadecimal string representation (compressed or uncompressed). It also has other utility functions that might be helpful for debugging and development, like print_hex, but those aren't directly used in the address generation process.
-```
+
 ### Security Considerations
 
 Passphrase Strength: The security of the generated addresses depends entirely on the strength of the passphrase. Use a strong, randomly generated passphrase.
@@ -138,12 +139,11 @@ Side-Channel Attacks: This code has not been hardened against side-channel attac
 ### Sponsorship
 If this project has been helpful to you, please consider sponsoring. Your support is greatly appreciated. Thank you!
 ```
--BTC: bc1qt3nh2e6gjsfkfacnkglt5uqghzvlrr6jahyj2k
--
--ETH: 0xD6503e5994bF46052338a9286Bc43bC1c3811Fa1
--
--DOGE: DTszb9cPALbG9ESNJMFJt4ECqWGRCgucky
--
--TRX: TAHUmjyzg7B3Nndv264zWYUhQ9HUmX4Xu4
--
+BTC: bc1qt3nh2e6gjsfkfacnkglt5uqghzvlrr6jahyj2k
+
+ETH: 0xD6503e5994bF46052338a9286Bc43bC1c3811Fa1
+
+DOGE: DTszb9cPALbG9ESNJMFJt4ECqWGRCgucky
+
+TRX: TAHUmjyzg7B3Nndv264zWYUhQ9HUmX4Xu4
 ```
