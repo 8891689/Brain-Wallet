@@ -25,7 +25,9 @@ This project is a C implementation of a brain wallet that generates Bitcoin addr
     *   Ubuntu/Debian:  `sudo apt-get install libgmp-dev`
     *   Fedora/CentOS/RHEL:  `sudo yum install gmp-devel`
     *   macOS (using Homebrew): `brew install gmp`
+
 *   **Standard C Libraries:**  `stdio.h`, `stdlib.h`, `stdint.h`, `stdbool.h`, `string.h`, `unistd.h`, `time.h`
+
 *   **Included Libraries:** The project includes self-contained implementations of the following in separate directories, which are linked during compilation:
     *   `ecc/`: Elliptic Curve Cryptography functions (secp256k1).
     *   `sha256/`: SHA256 hashing.
@@ -34,7 +36,7 @@ This project is a C implementation of a brain wallet that generates Bitcoin addr
     *   `bech32/`: Bech32 and Bech32m encoding/decoding.
     *   `customutil/`: Custom utility functions, including public key string generation.
 
-## Compilation
+### Compilation
 
 The project provides several methods for compilation, including a Makefile, a CMake build system, and a simple GCC command. Choose *one* of the following:
 
@@ -42,12 +44,10 @@ The project provides several methods for compilation, including a Makefile, a CM
 
 A `Makefile` is included for easy compilation.  From the project's root directory, simply run:
 
-```bash
+```
 make
 
 ```
-
-Note: You need to manually modify the Makefile to change main.c to Brain.c and the output executable name from address_generator to Brain.
 
 ### 2. Using CMake
 
@@ -57,28 +57,18 @@ mkdir build
 cd build
 cmake ..
 make
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+
 ```
-Note: You need to manually modify the CMakeLists.txt file to change main.c to Brain.c and the output executable name to Brain.
 
 ### 3. Using GCC (Single Command)
 
 Alternatively, you can compile the program with the following GCC command (ensure you are in the project's root directory):
 ```
 gcc -O3 -o Brain Brain.c sha256/sha256.c base58/base58.c bech32/bech32.c ripemd160/ripemd160.c ecc/ecc.c customutil/customutil.c -lgmp
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
 ```
-This command uses the -O3 optimization flag, which can generate more efficient executable code.
+
+
+### This command uses the -O3 optimization flag, which can generate more efficient executable code.
 
 Usage
 
@@ -119,8 +109,8 @@ P2WSH (Starts with bc1) Address (Uncompressed): bc1q5yxe627fp04wjwqccxck5qh3sz2g
 
 ```
 
-#Code Structure
-
+### Code Structure
+```
 Brain.c: The main program file. Handles command-line arguments, calls the address generation functions, and prints the results.
 
 ecc/ecc.h and ecc/ecc.c: Implements elliptic curve operations over the secp256k1 curve using the GMP library.
@@ -134,8 +124,8 @@ base58/base58.h and base58/base58.c: Implementation of Base58 and Base58Check en
 bech32/bech32.h and bech32/bech32.c: Implementation of Bech32 and Bech32m encoding/decoding.
 
 customutil/customutil.h and customutil/customutil.c: Contains the generate_strpublickey function, which converts a Point structure (representing an elliptic curve point) into its hexadecimal string representation (compressed or uncompressed). It also has other utility functions that might be helpful for debugging and development, like print_hex, but those aren't directly used in the address generation process.
-
-#Security Considerations
+```
+### Security Considerations
 
 Passphrase Strength: The security of the generated addresses depends entirely on the strength of the passphrase. Use a strong, randomly generated passphrase.
 
@@ -145,21 +135,9 @@ Randomness: The included code doesn't explicitly use a cryptographically secure 
 
 Side-Channel Attacks: This code has not been hardened against side-channel attacks (e.g., timing attacks).
 
-License
-
-This project is provided for educational purposes and is released under the MIT License. See the LICENSE file (if included) for details. You are free to use, modify, and distribute this code, but it comes with no warranty.
-
-#Key changes in this version:
-
-*   **Fully in English:**  The entire README is now in English.
-*   **Function Descriptions Removed:**  As requested, the detailed function explanations have been removed.
-*   **File and Executable Names Updated:** The README correctly refers to `Brain.c` and the `Brain` executable.
-*   **Compilation Instructions:** The compilation instructions are updated and include the `-O3` optimization flag.
-*   **Example Command:** Uses an English passphrase example.
-
-#Sponsorship
+### Sponsorship
 If this project has been helpful to you, please consider sponsoring. Your support is greatly appreciated. Thank you!
-
+```
 -BTC: bc1qt3nh2e6gjsfkfacnkglt5uqghzvlrr6jahyj2k
 -
 -ETH: 0xD6503e5994bF46052338a9286Bc43bC1c3811Fa1
@@ -168,10 +146,4 @@ If this project has been helpful to you, please consider sponsoring. Your suppor
 -
 -TRX: TAHUmjyzg7B3Nndv264zWYUhQ9HUmX4Xu4
 -
-
-#This English README is ready to use and accurately reflects the current state of your project.
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-IGNORE_WHEN_COPYING_END
+```
